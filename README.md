@@ -52,14 +52,14 @@ databricks apps deploy my-chatbot --source-code-path .
 
 ## What You Need to Fill In
 
-### Agent Template (5 TODOs)
+### Agent Template
 1. **Lakebase Setup:** Instance name, host, Service Principal credentials
 2. **Agent Config:** LLM endpoint, system prompt
 3. **UC Tools:** Optional Unity Catalog functions
 4. **Vector Search:** Optional retrieval indexes
 5. **UC Model:** Catalog, schema, model name
 
-### App Template (2 TODOs)
+### App Template 
 1. **Endpoint Name:** Your deployed agent endpoint
 2. **Lakebase Instance:** Only if using persistent history
 
