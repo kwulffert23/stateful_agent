@@ -1,0 +1,35 @@
+command: [
+  "streamlit", 
+  "run",
+  "app.py",
+  "--server.port",
+  "8000"
+]
+
+resources:
+  - name: serving-endpoint
+    serving_endpoint:
+      # TODO: Replace with your actual serving endpoint name
+      # This should be the endpoint name (e.g., agents_youruser-model-name)
+      # NOT the Unity Catalog model path
+      name: YOUR_AGENT_ENDPOINT_NAME_HERE
+      permission: CAN_QUERY
+  
+  # Optional: Uncomment if using persistent history (app_with_persistent_history.py)
+  # - name: lakebase-instance
+  #   lakebase:
+  #     # TODO: Replace with your Lakebase instance name
+  #     database_instance_name: YOUR_LAKEBASE_INSTANCE_NAME
+  #     permission: CAN_USE
+
+env:
+  - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+    value: "false"
+  - name: SERVING_ENDPOINT
+    valueFrom: serving-endpoint
+  
+  # Optional: Uncomment if using persistent history (app_with_persistent_history.py)
+  # - name: LAKEBASE_INSTANCE_NAME
+  #   # TODO: Replace with your Lakebase instance name (same as above)
+  #   value: "YOUR_LAKEBASE_INSTANCE_NAME"
+
