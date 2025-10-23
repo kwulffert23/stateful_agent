@@ -1,0 +1,44 @@
+command: [
+  "streamlit", 
+  "run",
+  "app.py",
+  "--server.port",
+  "8000"
+]
+
+resources:
+  - name: serving-endpoint
+    serving_endpoint:
+      # Actual serving endpoint name (not UC model path)
+      name: agents_kyra_wulffert-stateful_agent-stateful-agent-threads-exam
+      permission: CAN_QUERY
+  
+  - name: lakebase-instance
+    lakebase:
+      database_instance_name: kw-lakebase
+      permission: CAN_USE
+
+env:
+  - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+    value: "false"
+  - name: SERVING_ENDPOINT
+    valueFrom: serving-endpoint
+  
+  # Lakebase configuration
+  # PG* environment variables need to be set manually
+  - name: LAKEBASE_INSTANCE_NAME
+    value: "<TODO>"
+  - name: PGHOST
+    value: "<TODO>"
+  - name: PGDATABASE
+    value: "databricks_postgres"
+  - name: PGPORT
+    value: "5432"
+  - name: PGSSLMODE
+    value: "require"
+  - name: PGAPPNAME
+    value: "<TODO>"
+  - name: PGUSER
+    value: "<TODO>"  # App's Databricks identity
+  - name: LAKEBASE_ENABLED
+    value: "true"

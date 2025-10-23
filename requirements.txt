@@ -1,7 +1,7 @@
 # Core dependencies (required for both session-based and persistent history)
 mlflow>=2.21.2
 streamlit==1.44.1
-databricks-sdk
+databricks-sdk>=0.60.0
 
-# Required for persistent history (uncomment if using persistent history)
-# psycopg[binary,pool]>=3.1.0
+# Required for persistent history with Lakebase
+psycopg[binary,pool]>=3.1.0
